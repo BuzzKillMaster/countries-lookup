@@ -6,7 +6,7 @@ export default function Home(props: {
     countries: Country[]
 }) {
     return (
-        <AppContainer data={props.countries}/>
+        <AppContainer {...props}/>
     )
 }
 

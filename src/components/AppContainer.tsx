@@ -8,18 +8,18 @@ import {motion, AnimatePresence, LayoutGroup} from "framer-motion";
 import Country from "@/types/Country";
 
 export default function AppContainer(props: {
-    data: Country[]
+    countries: Country[]
 }) {
-    const [countries, setCountries] = useState(props.data)
+    const [countries, setCountries] = useState(props.countries)
     const [showCountryOverlay, setShowCountryOverlay] = useState(false)
-    const [selectedCountry, setSelectedCountry] = useState<Country>(props.data[0])
+    const [selectedCountry, setSelectedCountry] = useState<Country>(props.countries[0])
 
     const [searchFilter, setSearchFilter] = useState("")
     const [continentFilter, setContinentFilter] = useState("")
 
     useEffect(() => {
-        setCountries(props.data.filter((country) => country.continent.toLowerCase().includes(continentFilter.toLowerCase())).filter((country) => country.name.toLowerCase().includes(searchFilter.toLowerCase())))
-    }, [searchFilter, continentFilter])
+        setCountries(props.countries.filter((country) => country.continent.toLowerCase().includes(continentFilter.toLowerCase())).filter((country) => country.name.toLowerCase().includes(searchFilter.toLowerCase())))
+    }, [searchFilter, continentFilter, props.countries])
 
     const displayCountryOverlay = (country: Country) => {
         setSelectedCountry(country)
