@@ -2,6 +2,17 @@ import React, {useState} from "react";
 import {IoMdArrowDropdown} from "react-icons/io";
 import {AnimatePresence, motion} from "framer-motion";
 
+const continents = [
+    "Any",
+    "Africa",
+    "Antarctic",
+    "Asia",
+    "Europe",
+    "North America",
+    "Oceania",
+    "South America",
+]
+
 export default function FilterDropdown(props: {
     value: string
     handleChange: (value: string) => void
@@ -19,14 +30,9 @@ export default function FilterDropdown(props: {
             <AnimatePresence>
                 {showOptions &&
                     <motion.ul initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className={"bg-gray-50 rounded shadow min-w-full w-max top-full mt-2 p-4 right-0 absolute"}>
-                        <DropdownMenuItem onClick={props.handleChange} text={"Any"}/>
-                        <DropdownMenuItem onClick={props.handleChange}  text={"Africa"}/>
-                        <DropdownMenuItem onClick={props.handleChange}  text={"Antarctic"}/>
-                        <DropdownMenuItem onClick={props.handleChange}  text={"Asia"}/>
-                        <DropdownMenuItem onClick={props.handleChange}  text={"Europe"}/>
-                        <DropdownMenuItem onClick={props.handleChange}  text={"North America"}/>
-                        <DropdownMenuItem onClick={props.handleChange} text={"Oceania"}/>
-                        <DropdownMenuItem onClick={props.handleChange}  text={"South America"}/>
+                        {continents.map(value => (
+                            <DropdownMenuItem key={value} onClick={props.handleChange} text={value}/>
+                        ))}
                     </motion.ul>
                 }
             </AnimatePresence>
