@@ -1,11 +1,10 @@
 import Head from 'next/head'
 import React from "react";
 import AppContainer from "@/components/AppContainer";
-import {GetServerSideProps} from "next";
 import Country from "@/types/Country";
 
 export default function Home(props: {
-    data: Country[]
+    countries: Country[]
 }) {
     return (
         <>
@@ -15,12 +14,12 @@ export default function Home(props: {
                 <meta name="viewport" content="width=device-width, initial-scale=1"/>
                 {/*<link rel="icon" href="/favicon.ico" />*/}
             </Head>
-            <AppContainer data={props.data}/>
+            <AppContainer data={props.countries}/>
         </>
     )
 }
 
-export const getServerSideProps: GetServerSideProps<{ data: Country[] }> = async () => {
+export async function getServerSideProps(): Promise<{ props: { countries: Country[] } }> {
     const res = await fetch("https://restcountries.com/v3.1/all")
     const data = await res.json()
 
@@ -41,7 +40,7 @@ export const getServerSideProps: GetServerSideProps<{ data: Country[] }> = async
 
     return {
         props: {
-            data: countries
+            countries: countries
         },
     }
 }
