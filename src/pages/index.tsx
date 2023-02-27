@@ -4,7 +4,7 @@ import AppContainer from "@/components/AppContainer";
 import {GetServerSideProps} from "next";
 import Country from "@/types/Country";
 
-function Home(props: {
+export default function Home(props: {
     data: Country[]
 }) {
     return (
@@ -20,7 +20,7 @@ function Home(props: {
     )
 }
 
-export const getServerSideProps: GetServerSideProps<{ data: Country[] }> = async (context) => {
+export const getServerSideProps: GetServerSideProps<{ data: Country[] }> = async () => {
     const res = await fetch("https://restcountries.com/v3.1/all")
     const data = await res.json()
 
@@ -45,5 +45,3 @@ export const getServerSideProps: GetServerSideProps<{ data: Country[] }> = async
         },
     }
 }
-
-export default Home
