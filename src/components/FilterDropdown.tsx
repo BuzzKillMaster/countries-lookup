@@ -3,8 +3,8 @@ import {IoMdArrowDropdown} from "react-icons/io";
 import {AnimatePresence, motion} from "framer-motion";
 
 export default function FilterDropdown(props: {
-    currentFilter: string
-    onChange: (value: string) => void
+    value: string
+    handleChange: (value: string) => void
 }) {
     const [showOptions, setShowOptions] = useState(false)
 
@@ -12,21 +12,21 @@ export default function FilterDropdown(props: {
         <div onClick={() => setShowOptions(!showOptions)} className={"p-4 bg-gray-50 shadow rounded cursor-pointer relative"}>
             <div className={"h-full w-full absolute inset-0"}></div>
             <div className={"flex items-center gap-4"}>
-                <p className={"flex-grow"}>{props.currentFilter === "" ? "Filter by continent" : props.currentFilter}</p>
+                <p className={"flex-grow"}>{props.value === "" ? "Filter by continent" : props.value}</p>
                 <IoMdArrowDropdown className={showOptions ? "rotate-180" : ""}/>
             </div>
 
             <AnimatePresence>
                 {showOptions &&
                     <motion.ul initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className={"bg-gray-50 rounded shadow min-w-full w-max top-full mt-2 p-4 right-0 absolute"}>
-                        <DropdownMenuItem onClick={props.onChange} text={"Any"}/>
-                        <DropdownMenuItem onClick={props.onChange}  text={"Africa"}/>
-                        <DropdownMenuItem onClick={props.onChange}  text={"Antarctic"}/>
-                        <DropdownMenuItem onClick={props.onChange}  text={"Asia"}/>
-                        <DropdownMenuItem onClick={props.onChange}  text={"Europe"}/>
-                        <DropdownMenuItem onClick={props.onChange}  text={"North America"}/>
-                        <DropdownMenuItem onClick={props.onChange} text={"Oceania"}/>
-                        <DropdownMenuItem onClick={props.onChange}  text={"South America"}/>
+                        <DropdownMenuItem onClick={props.handleChange} text={"Any"}/>
+                        <DropdownMenuItem onClick={props.handleChange}  text={"Africa"}/>
+                        <DropdownMenuItem onClick={props.handleChange}  text={"Antarctic"}/>
+                        <DropdownMenuItem onClick={props.handleChange}  text={"Asia"}/>
+                        <DropdownMenuItem onClick={props.handleChange}  text={"Europe"}/>
+                        <DropdownMenuItem onClick={props.handleChange}  text={"North America"}/>
+                        <DropdownMenuItem onClick={props.handleChange} text={"Oceania"}/>
+                        <DropdownMenuItem onClick={props.handleChange}  text={"South America"}/>
                     </motion.ul>
                 }
             </AnimatePresence>

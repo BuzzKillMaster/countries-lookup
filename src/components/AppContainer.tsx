@@ -57,8 +57,8 @@ export default function AppContainer(props: {
 
                 <div className={"container mx-auto"}>
                     <div className={"z-20 relative py-12 md:flex items-center justify-between"}>
-                        <SearchInput handleChange={updateFilterText} value={filter.text}/>
-                        <FilterDropdown currentFilter={filter.continent} onChange={updateFilterContinent}/>
+                        <SearchInput value={filter.text} handleChange={updateFilterText}/>
+                        <FilterDropdown value={filter.continent} handleChange={updateFilterContinent}/>
                     </div>
 
                     <LayoutGroup>
