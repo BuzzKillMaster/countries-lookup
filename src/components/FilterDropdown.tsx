@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {IoMdArrowDropdown} from "react-icons/io";
 import {AnimatePresence, motion} from "framer-motion";
+import DropdownMenuItem from "@/components/DropdownMenuOption";
 
 const continents = [
     "Any",
@@ -37,14 +38,5 @@ export default function FilterDropdown(props: {
                 }
             </AnimatePresence>
         </div>
-    )
-}
-
-function DropdownMenuItem(props: {
-    text: string
-    onClick: (value: string) => void
-}) {
-    return (
-        <li onClick={() => props.onClick(props.text !== "Any" ? props.text : "")} className={"px-4 py-4 rounded hover:bg-gray-100"}>{props.text}</li>
     )
 }
