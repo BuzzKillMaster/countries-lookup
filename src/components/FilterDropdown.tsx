@@ -32,7 +32,7 @@ export default function FilterDropdown(props: {
                 {showDropdown &&
                     <motion.ul initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className={"bg-gray-50 rounded shadow min-w-full w-max top-full mt-2 p-4 right-0 absolute"}>
                         {continents.map(value => (
-                            <DropdownMenuItem key={value} onClick={props.handleChange} text={value}/>
+                            <DropdownMenuItem key={value} handleClick={props.handleChange} text={value}/>
                         ))}
                     </motion.ul>
                 }
